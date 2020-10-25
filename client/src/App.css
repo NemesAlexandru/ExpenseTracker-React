@@ -231,6 +231,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .transactions h2 {
+  text-align: left;
   font-family: "Baloo da 2", serif;
   font-size: 2.5rem;
   letter-spacing: 0.1rem;
@@ -297,6 +298,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .transaction-text {
   width: 23rem;
+  text-align: left;
 }
 
 .transaction-amount {
