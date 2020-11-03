@@ -34,7 +34,7 @@ mongoose.connect(db, { useUnifiedTopology: true,
     console.log('MongoDB connected...')).catch(err => console.log(err));
 
   //test
-  
+
 app.get('/api/customers', (req, res) =>{
     const customers = [
     {id: 1, firstName: 'John', lastName: 'Doe'},
@@ -43,6 +43,9 @@ app.get('/api/customers', (req, res) =>{
     ];
     res.json(customers);
 });
+
+//Routes
+app.use('/transactions', require('./routes/transactions'));
 
 const PORT = process.env.PORT || 5000;
 

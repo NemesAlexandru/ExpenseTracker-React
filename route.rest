@@ -1,0 +1,7 @@
+POST http://localhost:5000/transactions/addIncomeTransaction 
+Content-Type: application/json
+
+{
+"incomeText": "KanyeDoi",
+"incomeAmount": 200
+}
