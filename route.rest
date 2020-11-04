@@ -8,5 +8,20 @@ Content-Type: application/json
 
 ###
 
+POST http://localhost:5000/transactions/addExpenseTransaction 
+Content-Type: application/json
+
+{
+"expenseText": "KanyeOne",
+"expenseAmount": 400
+}
+
+###
+
 DELETE http://localhost:5000/transactions/deleteIncomeTransaction/5fa2d83864ecf912c8ab2185
+Content-Type: application/json
+
+###
+
+DELETE http://localhost:5000/transactions/deleteExpenseTransaction/5fa2dbad7949b21970f988e3
 Content-Type: application/json

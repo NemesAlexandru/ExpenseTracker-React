@@ -8,9 +8,17 @@ const transactionController = require('../controllers/transaction');
 
 router.post('/addIncomeTransaction', transactionController.addIncomeTransaction);
 
+//add expense transaction
+
+router.post('/addExpenseTransaction', transactionController.addExpenseTransaction);
+
 //delete income transaction
 
 router.delete('/deleteIncomeTransaction/:id', transactionController.deleteIncomeTransaction);
+
+//delete expense transaction
+
+router.delete('/deleteExpenseTransaction/:id', transactionController.deleteExpenseTransaction);
 
 
 
