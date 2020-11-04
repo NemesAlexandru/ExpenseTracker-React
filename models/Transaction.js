@@ -7,12 +7,12 @@ const TransactionSchema = new mongoose.Schema({
     //         ref: "User"
     // },
     incomeTransactions: [
-       {
+       {   
             incomeText: String, 
             incomeAmount: Number }
     ],
     expenseTransactions: [
-        { 
+        {   
             expenseText: String, 
             expenseAmount: Number }
     ]

@@ -2,6 +2,11 @@ POST http://localhost:5000/transactions/addIncomeTransaction
 Content-Type: application/json
 
 {
-"incomeText": "KanyeDoi",
-"incomeAmount": 200
+"incomeText": "KanyeOne",
+"incomeAmount": 400
 }
+
+###
+
+DELETE http://localhost:5000/transactions/deleteIncomeTransaction/5fa2d83864ecf912c8ab2185
+Content-Type: application/json
