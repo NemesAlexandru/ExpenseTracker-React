@@ -20,6 +20,10 @@ router.delete('/deleteIncomeTransaction/:id', transactionController.deleteIncome
 
 router.delete('/deleteExpenseTransaction/:id', transactionController.deleteExpenseTransaction);
 
+//get all transactions
+
+router.get('/getAll', transactionController.getAll);
+
 
 
 module.exports = router;

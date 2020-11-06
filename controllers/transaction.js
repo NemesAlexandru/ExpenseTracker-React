@@ -105,3 +105,29 @@ exports.deleteExpenseTransaction = async (req, res) => {
     res.status(500).send("Something went wrong");
   }
 }
+
+exports.getAll = async (req, res) => {
+  let transaction = await Transaction.findOne({});
+  let expTrans = [];
+  let incTrans = [];
+  try{
+    if(transaction){
+      transaction.expenseTransactions.forEach(el => expTrans.push({ id: el._id, expenseText: el.expenseText, expenseAmount: el.expenseAmount }));
+      transaction.incomeTransactions.forEach(el => incTrans.push({ id: el._id, incomeText: el.incomeText, incomeAmount: el.incomeAmount }));
+
+      let newTrans = {
+        incomeTransactions: incTrans,
+        expenseTransactions: expTrans
+      };
+
+      return res.status(201).send(newTrans);
+    }
+    else{
+      return res.status(201).send('No transactions found')
+    }
+
+  }catch (err) {
+    console.log(err);
+    res.status(500).send("Something went wrong");
+  }
+}

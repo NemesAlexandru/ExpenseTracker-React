@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
 "incomeText": "KanyeOne",
-"incomeAmount": 400
+"incomeAmount": 440
 }
 
 ###
@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
 "expenseText": "KanyeOne",
-"expenseAmount": 400
+"expenseAmount": 200
 }
 
 ###
@@ -24,4 +24,9 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:5000/transactions/deleteExpenseTransaction/5fa2dbad7949b21970f988e3
+Content-Type: application/json
+
+###
+
+GET http://localhost:5000/transactions/getAll
 Content-Type: application/json
