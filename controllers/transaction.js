@@ -117,8 +117,8 @@ exports.getAll = async (req, res) => {
       transaction.incomeTransactions.forEach(el => incTrans.push({ id: el._id, incomeText: el.incomeText, incomeAmount: el.incomeAmount }));
 
       let newTrans = {
-        incomeTransactions: incTrans,
-        expenseTransactions: expTrans
+        incomeTransactions: incTrans.reverse(),
+        expenseTransactions: expTrans.reverse()
       };
 
       return res.status(201).send(newTrans);
