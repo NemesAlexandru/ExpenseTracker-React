@@ -72,7 +72,7 @@ exports.deleteIncomeTransaction = async (req, res) => {
     }
 
     else{
-      return res.status(201).send('No transaction found with that ID');
+      return res.status(401).send('No transaction found with that ID');
     }
 
   } catch (err) {
@@ -82,8 +82,8 @@ exports.deleteIncomeTransaction = async (req, res) => {
 }
 
 exports.deleteExpenseTransaction = async (req, res) => {
+ 
   try {
-
     const transactionID = req.params.id;
     let transaction = await Transaction.findOne({});
     let transactionIndex = transaction.expenseTransactions.findIndex(p => p._id == transactionID);
@@ -97,7 +97,7 @@ exports.deleteExpenseTransaction = async (req, res) => {
     }
 
     else{
-      return res.status(201).send('No transaction found with that ID');
+      return res.status(401).send('No transaction found with that ID');
     }
 
   } catch (err) {
@@ -107,6 +107,7 @@ exports.deleteExpenseTransaction = async (req, res) => {
 }
 
 exports.getAll = async (req, res) => {
+  
   let transaction = await Transaction.findOne({});
   let expTrans = [];
   let incTrans = [];
@@ -123,7 +124,7 @@ exports.getAll = async (req, res) => {
       return res.status(201).send(newTrans);
     }
     else{
-      return res.status(201).send('No transactions found')
+      return res.status(401).send('No transactions found')
     }
 
   }catch (err) {

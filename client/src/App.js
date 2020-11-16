@@ -7,7 +7,9 @@ import AddTransaction from './components/addTransaction/addTransaction'
 import IncomeList from './components/incomeList/incomeList'
 import ExpenseList from './components/expenseList/expenseList'
 import {GlobalContextProvider} from './context/globalState'
+
 function App() {
+
   return (
     <GlobalContextProvider>
     <div className="App">

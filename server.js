@@ -7,6 +7,18 @@ const app = express();
 
 const mongoose = require('mongoose');
 
+//CORS
+
+const cors = require('cors')
+
+app.use(cors());
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 //body-parser
 
 var bodyParser = require('body-parser');
@@ -47,6 +59,8 @@ app.get('/api/customers', (req, res) =>{
 //Routes
 app.use('/transactions', require('./routes/transactions'));
 
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`server started on port ${PORT}`));
+

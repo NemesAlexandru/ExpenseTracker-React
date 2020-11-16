@@ -1,9 +1,23 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import {GlobalContext} from '../../context/globalState'
 import ExpenseTransaction from '../expenseTransaction/expenseTransaction'
 
 const ExpenseList = () => {
   const {expenseTransactions} = useContext(GlobalContext);
+  
+  const {getExpense} = useContext(GlobalContext)
+
+  useEffect(() => {
+    fetch('http://localhost:5000/transactions/getAll')
+        .then(res => res.json())
+        .then((res) => {
+            // console.log(res.expenseTransactions);
+            getExpense(res);
+        }).catch((err) => {
+        console.log(err);
+    })
+}, []);
+
     return (
         <div className="transactions transactions-expense">
           <h2>Transaction History</h2>

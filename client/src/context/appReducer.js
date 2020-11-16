@@ -1,5 +1,15 @@
 let AppReducer = (state, action) => {
 switch(action.type){
+    case "GET_EXPENSE":
+            return {
+                ...state,
+                expenseTransactions: action.payload.expenseTransactions
+            }
+    case "GET_INCOME":
+            return {
+                ...state,
+                incomeTransactions: action.payload.incomeTransactions
+            }
     case 'ADD_INCOME':
         return {
             ...state,

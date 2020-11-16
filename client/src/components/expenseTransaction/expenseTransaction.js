@@ -9,7 +9,17 @@ const ExpenseTransaction = ({expenseTransaction}) => {
                 <span className="transaction-text">{expenseTransaction.expenseText}</span>
             <span className="transaction-amount">${expenseTransaction.expenseAmount}</span>
                 <button className="delete-btn" onClick={() =>{
+                    
+                    //deleting from front-end
                     deleteTransaction(expenseTransaction.id)
+
+                    //deleting from DB
+                    fetch('http://localhost:5000/transactions/deleteExpenseTransaction/' + expenseTransaction.id, {
+                    method: 'DELETE',
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    })
                 }}>
                 <i className="fas fa-trash-alt"></i>
                 </button>     

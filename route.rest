@@ -18,7 +18,7 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:5000/transactions/deleteIncomeTransaction/5fa2d83864ecf912c8ab2185
+DELETE http://localhost:5000/transactions/deleteIncomeTransaction/5fa576e0df096b078c35c115
 Content-Type: application/json
 
 ###
