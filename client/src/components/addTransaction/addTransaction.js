@@ -26,6 +26,26 @@ const onSubmitIncome = e => {
         incomeAmount: incomeAmount * 1
     };
     addIncome(newIncomeTransaction);
+
+    //POST to save income transaction in DB
+
+   const url = "http://localhost:5000/transactions/addIncomeTransaction"
+
+   fetch(url, {
+       method: 'POST',
+       body: JSON.stringify({
+       "incomeText": newIncomeTransaction.incomeText,
+       "incomeAmount": newIncomeTransaction.incomeAmount
+       }),
+       headers: {
+        "Content-type": "application/json; charset=UTF-8"
+       }
+   }).then(response => response.json())
+   .then(json => console.log(json)).catch((err) => {
+    console.log(err);
+})
+   
+
     setIncome({
         incomeText: '',
         incomeAmount: 0
@@ -53,6 +73,24 @@ const onSubmitExpense = e => {
         expenseAmount: expenseAmount * 1
     };
     addExpense(newExpenseTransaction);
+
+    //POST to save expense transaction in DB
+
+   const url = "http://localhost:5000/transactions/addExpenseTransaction"
+
+   fetch(url, {
+       method: 'POST',
+       body: JSON.stringify({
+       "expenseText": newExpenseTransaction.expenseText,
+       "expenseAmount": newExpenseTransaction.expenseAmount
+       }),
+       headers: {
+        "Content-type": "application/json; charset=UTF-8"
+       }
+   }).then(response => response.json())
+   .then(json => console.log(json)).catch((err) => {
+    console.log(err);
+})
 
     setExpense({
         expenseText: '',
