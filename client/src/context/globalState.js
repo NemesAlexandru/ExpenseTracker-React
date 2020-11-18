@@ -4,7 +4,7 @@ import AppReducer from './appReducer'
 
 const initialState = {
     incomeTransactions: [],
-    expenseTransactions: []
+    expenseTransactions: [],
 };
 
 

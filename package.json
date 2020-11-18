@@ -19,6 +19,7 @@
   "dependencies": {
     "axios": "^0.21.0",
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.5.3",
     "concurrently": "^5.3.0",
     "cors": "^2.8.5",
     "corss": "^2.8.5",
@@ -29,6 +30,7 @@
     "react": "^17.0.1",
     "react-axios": "^2.0.3",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.0",
     "uuid": "^8.3.1"
   },
