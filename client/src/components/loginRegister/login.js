@@ -1,9 +1,31 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './loginRegister.css'
+import Axios from 'axios';
 
 const Login = () => {
+
+	// const [loginUsername, setLoginUsername] = useContext(GlobalContext);
+	// const [loginPassword, setLoginPassword] = useContext(GlobalContext);
+
+	const [loginUsername, setLoginUsername] = useState('')
+	const [loginPassword, setLoginPassword] = useState('')
+
+	const login = () => {
+		Axios({
+		  method: "POST",
+		  data: {
+			username: loginUsername,
+			password: loginPassword,
+		  },
+		  withCredentials: true,
+		  url: "http://localhost:5000/login",
+		})
+		.then((res) => console.log(res));
+	  };
+
+
   return(
-    <form action="/examples/actions/confirmation.php" method="post">
+    <form>
 						<p className="hint-text">Sign in with your social media account</p>
 						<div className="form-group social-btn clearfix">
 							<a href="#" className="btn btn-secondary facebook-btn float-left"><i className="fa fa-facebook"></i> Facebook</a>
@@ -11,12 +33,12 @@ const Login = () => {
 						</div>
 						<div className="or-seperator"><b>or</b></div>
 						<div className="form-group">
-							<input type="text" className="form-control" placeholder="Username" required="required" />
+							<input type="text" className="form-control" placeholder="Username" onChange={(e) => setLoginUsername(e.target.value)} required="required" />
 						</div>
                         <div className="form-group">
-							<input type="password" className="form-control" placeholder="Password" required="required" />
+							<input type="password" className="form-control" placeholder="Password" onChange={(e) => setLoginPassword(e.target.value)} required="required" />
 						</div>
-						<input type="submit" className="btn btn-primary btn-block" value="Login" />
+						<input type="submit" onClick={login} className="btn btn-primary btn-block" value="Login" />
 						<div className="text-center mt-2">
 							<a href="#">Forgot Your password?</a>
 						</div>

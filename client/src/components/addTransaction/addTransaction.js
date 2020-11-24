@@ -1,5 +1,6 @@
 import React, {useState, useContext} from 'react'
-import {v4 as uuidv4} from 'uuid'
+// import {v4 as uuidv4} from 'uuid'
+// import {nanoid} from 'nanoid'
 import {GlobalContext} from '../../context/globalState'
 
 const AddTransaction = () => {
@@ -21,17 +22,18 @@ const onSubmitIncome = e => {
     e.preventDefault();
 
     const newIncomeTransaction = {
-        id: uuidv4(),
+        // id: nanoid(),
         incomeText,
         incomeAmount: incomeAmount * 1
     };
-    addIncome(newIncomeTransaction);
+    // addIncome(newIncomeTransaction);
 
     //POST to save income transaction in DB
 
    const url = "http://localhost:5000/transactions/addIncomeTransaction"
 
    fetch(url, {
+       credentials: 'include',
        method: 'POST',
        body: JSON.stringify({
        "incomeText": newIncomeTransaction.incomeText,
@@ -41,7 +43,11 @@ const onSubmitIncome = e => {
         "Content-type": "application/json; charset=UTF-8"
        }
    }).then(response => response.json())
-   .then(json => console.log(json)).catch((err) => {
+   .then(json => addIncome({
+    id: json._id,
+    incomeText: json.incomeText,
+    incomeAmount: json.incomeAmount
+ })).catch((err) => {
     console.log(err);
 })
    
@@ -68,19 +74,24 @@ const onSubmitExpense = e => {
     e.preventDefault();
 
     const newExpenseTransaction = {
-        id: uuidv4(),
+        // id: nanoid(),
         expenseText,
         expenseAmount: expenseAmount * 1
     };
-    addExpense(newExpenseTransaction);
+    // addExpense(newExpenseTransaction);
+
+    
 
     //POST to save expense transaction in DB
 
    const url = "http://localhost:5000/transactions/addExpenseTransaction"
 
+
    fetch(url, {
+       credentials: 'include',
        method: 'POST',
        body: JSON.stringify({
+    //    "reactId": newExpenseTransaction.id,
        "expenseText": newExpenseTransaction.expenseText,
        "expenseAmount": newExpenseTransaction.expenseAmount
        }),
@@ -88,9 +99,15 @@ const onSubmitExpense = e => {
         "Content-type": "application/json; charset=UTF-8"
        }
    }).then(response => response.json())
-   .then(json => console.log(json)).catch((err) => {
+   .then(json => addExpense({
+       id: json._id,
+       expenseText: json.expenseText,
+       expenseAmount: json.expenseAmount
+    }))
+    .catch((err) => {
     console.log(err);
 })
+
 
     setExpense({
         expenseText: '',

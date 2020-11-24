@@ -15,6 +15,7 @@ const {deleteTransaction} = useContext(GlobalContext)
 
                      //deleting from DB
                      fetch('http://localhost:5000/transactions/deleteIncomeTransaction/' + incomeTransaction.id, {
+                     credentials: 'include',
                      method: 'DELETE',
                      })
                      .catch((err) => {

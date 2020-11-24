@@ -3,6 +3,7 @@ import {GlobalContext} from '../../context/globalState'
 
 const ExpenseTransaction = ({expenseTransaction}) => {
     const {deleteTransaction} = useContext(GlobalContext)
+    
 
     return (
         <li className="transaction">
@@ -11,10 +12,11 @@ const ExpenseTransaction = ({expenseTransaction}) => {
                 <button className="delete-btn" onClick={() =>{
                     
                     //deleting from front-end
-                    deleteTransaction(expenseTransaction.id)
+                    deleteTransaction(expenseTransaction.id);
 
                     //deleting from DB
                     fetch('http://localhost:5000/transactions/deleteExpenseTransaction/' + expenseTransaction.id, {
+                    credentials: "include",
                     method: 'DELETE',
                     })
                     .catch((err) => {

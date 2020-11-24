@@ -3,6 +3,8 @@ import AppReducer from './appReducer'
 
 
 const initialState = {
+    // loginUsername: "",
+    // loginPassword: "",
     incomeTransactions: [],
     expenseTransactions: [],
 };
@@ -12,6 +14,7 @@ export const GlobalContext = createContext(initialState);
 
 export const GlobalContextProvider = ({children}) => {
     const [state, dispatch] = useReducer(AppReducer, initialState)
+
 
     const getExpense = expenseTransactions => {
       dispatch({
@@ -51,7 +54,10 @@ dispatch({
 
     return(
         <GlobalContext.Provider value={
-            { incomeTransactions: state.incomeTransactions,
+            { 
+            // loginUsername: state.loginUsername,
+            //   loginPassword: state.loginPassword,
+              incomeTransactions: state.incomeTransactions,
               expenseTransactions: state.expenseTransactions,
               getExpense, getIncome, addIncome, addExpense, deleteTransaction }
         }>

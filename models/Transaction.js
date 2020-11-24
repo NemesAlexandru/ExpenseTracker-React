@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
 
 const TransactionSchema = new mongoose.Schema({
-    // {
-    //     userId: {
-    //         type: mongoose.Schema.Types.ObjectId,
-    //         ref: "User"
-    // },
+
+        userId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+    },
     incomeTransactions: [
-       {   
+       {    reactId: String,
             incomeText: String, 
             incomeAmount: Number }
     ],
     expenseTransactions: [
-        {   
+        {   reactId: String,
             expenseText: String, 
             expenseAmount: Number }
     ]

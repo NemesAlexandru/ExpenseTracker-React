@@ -8,7 +8,14 @@ const {incomeTransactions} = useContext(GlobalContext);
 const {getIncome} = useContext(GlobalContext)
 
   useEffect(() => {
-    fetch('http://localhost:5000/transactions/getAll')
+    fetch('http://localhost:5000/transactions/getAll', {
+      credentials: "include",
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8"
+        // Authorization: `Basic ${loginUsername}:${loginPassword}`,
+      }
+    })
         .then(res => res.json())
         .then((res) => {
             // console.log(res.incomeTransactions);

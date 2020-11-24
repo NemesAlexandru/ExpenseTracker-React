@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './loginRegister.css';
 import Login from './login';
 import SignUp from './signUp';
-import Search from './search';
-import Links from './links';
+import Axios from "axios";
+// import Search from './search';
+// import Links from './links';
 
 const Navbar = () => {
+
+  const [data, setData] = useState(null);
+
+  const getUser = () => {
+    Axios({
+      method: "GET",
+      withCredentials: true,
+      url: "http://localhost:5000/user",
+    }).then((res) => {
+      setData(res.data);
+      console.log(res.data);
+    });
+  };
+
+
   return(
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-	<a href="#" className="navbar-brand">Brand<b>Name</b></a>  		
+	{/* <a href="#" className="navbar-brand">Brand<b>Name</b></a>  		 */}
+  <button className="navbar-brand" onClick={getUser}>Click</button>
+  {data ? <h1>Welcome Back {data.username}</h1> : null}
 	<button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
 		<span className="navbar-toggler-icon"></span>
 	</button>
